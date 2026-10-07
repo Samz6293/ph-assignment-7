@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "@heroui/styles"; 
 
+/* *{ @apply border border-red-500}; */
+
 @theme {
   --color-base-100: #fafcfa;
   --color-base-200: #f0f5f0;
@@ -28,9 +30,9 @@
 
 @layer components {
   .button {
-    @apply rounded-lg;
+    @apply rounded-lg px-4 text-base-content border;
   }
 }
 @utility content-box {
-    @apply mx-auto px-4 max-w-7xl;
+    @apply mx-auto max-w-7xl w-[95%];
 }
