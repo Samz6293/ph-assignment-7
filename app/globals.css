@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "@heroui/styles"; 
+
+@theme {
+  --color-base-100: #fafcfa;
+  --color-base-200: #f0f5f0;
+  --color-base-300: #e1e8e1;
+  --color-base-content: #1d271f;
+
+  --color-primary: #05893e;
+  --color-primary-content: #f3fbf4;
+  --color-primary-strong: #047f39;
+  --color-primary-stronger: #047c37;
+
+  --color-success: #1a9951;
+  --color-error: #d03739;
+  --color-error-content: #fff6f5;
+
+  --color-white: #ffffff;
+
+  --color-hover-neutral-bg: #dadeda;
+  --color-hover-neutral-border: #ccd0cc;
+  --color-hover-primary-border: #037333;
+  --color-hover-error-bg: #bd3133;
+  --color-hover-error-border: #b02d2f;
+  --color-hover-link-primary: #02642b;
+}
+
+@layer components {
+  .button {
+    @apply rounded-lg;
+  }
+}
+@utility content-box {
+    @apply mx-auto px-4 max-w-7xl;
+}
