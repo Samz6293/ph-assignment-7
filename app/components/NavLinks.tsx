@@ -7,10 +7,10 @@ async function navCategories() {
     return response;
 }
 
-export default async function NavLinks() {
+export default async function NavLinks({ className }: { className?: string }) {
     const navLinks = await navCategories();
     return (
-        <div className="flex gap-4 justify-center">
+        <div className={className}>
             {navLinks.map((link: NavLink) => <NavLinkItem key={link.id} link={link} /> )}
         </div>
     )

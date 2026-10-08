@@ -3,6 +3,8 @@ import logo from "@/app/assets/market.png"
 import { Button } from "@heroui/react";
 import NavLinks from "./NavLinks";
 import { dateToday } from "../constants/NumberAndUnits";
+import Navigation from "./NavDrawer";
+import AuthButtons from "./AuthButtons";
 
 
 export default function Nav() {
@@ -26,16 +28,13 @@ export default function Nav() {
                     </div>
 
                     {/* buttons */}
-                    <div className="flex gap-2">
-                        <Button className={"bg-base-100 hover:bg-base-300"}>সাইন ইন</Button>
-                        <Button className={"btn-primary"}>
-                            সাইন আপ
-                        </Button>
-                    </div>
+                    <AuthButtons className="hidden gap-2 lg:flex" />
+                    <Navigation/>
                 </div>
 
                 {/* links */}
-                <NavLinks/>
+                <NavLinks className="hidden gap-4 justify-center
+        lg:flex"/>
             </div>
         </nav>
     )

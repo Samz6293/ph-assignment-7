@@ -13,7 +13,7 @@ export default async function CategoryPage({ params }: CategoryParams) {
     const categoryDetails: Product[] = await getCategoryDetails(category);
     return (
         // wrapper
-        <div className="content-box space-y-10 border border-red-500">
+        <div className="content-box space-y-10">
             {/* top header */}
             <div className="flex items-center gap-3 bg-base-100 border border-base-300 rounded-2xl p-5">
                 <p className="text-4xl">{categoryDetails[0].categoryIcon}</p>
