@@ -1,0 +1,1 @@
+export const formatter = new Intl.NumberFormat('bn-BD', { useGrouping: false });

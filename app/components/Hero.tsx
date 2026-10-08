@@ -5,7 +5,7 @@ import heroImage from "@/app/assets/bazar-hero.png"
 
 export default function Hero() {
     return (
-        <div className="content-box flex flex-col items-center bg-base-100 border border-base-300 p-4 rounded-3xl
+        <div className="content-box flex flex-col items-center justify-between bg-base-100 border border-base-300 p-4 rounded-3xl
         md:flex-row">
             <div className="flex flex-col gap-2">
                 <p className="bg-primary/10 text-primary px-3 py-1 rounded-full w-fit font-medium">{dateToday}</p>
