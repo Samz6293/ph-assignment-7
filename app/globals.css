@@ -34,6 +34,12 @@
   }
 }
 
+@layer base {
+  h2 {
+    @apply text-xl font-bold;
+  }
+}
+
 @utility content-box {
     @apply mx-auto max-w-6xl w-[95%];
 }

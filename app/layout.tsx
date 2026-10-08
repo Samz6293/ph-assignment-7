@@ -21,7 +21,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <body className="text-base-content min-h-screen flex flex-col">
                 <Nav />
                 <Marquee />
-                <main className="flex-1 my-10">
+                <main className="flex-1 space-y-10 my-10">
                     {children}
                 </main>
                 <Footer />

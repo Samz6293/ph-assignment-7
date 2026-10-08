@@ -33,3 +33,14 @@ export interface Market {
     min: number
     max: number
 }
+
+export interface ProductCardProps {
+    product: Product
+}
+
+export interface Unit {
+    kg: string
+    litre: string
+    dozen: string
+    piece: string
+}
