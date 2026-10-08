@@ -9,7 +9,7 @@ import NavLinks from "./NavLinks";
 export default function Nav() {
     return (
 
-        <nav className="text-base-content bg-base-100 border border-bg-base-300">
+        <nav className="bg-base-100 border border-bg-base-300">
 
             <div className="content-box flex flex-col gap-3 py-3">
 

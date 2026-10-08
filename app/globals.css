@@ -34,5 +34,5 @@
   }
 }
 @utility content-box {
-    @apply mx-auto max-w-7xl w-[95%];
+    @apply mx-auto max-w-6xl w-[95%];
 }
