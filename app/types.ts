@@ -44,3 +44,7 @@ export interface Unit {
     dozen: string
     piece: string
 }
+
+export interface CategoryParams {
+    params: Promise<{category: string}>
+}

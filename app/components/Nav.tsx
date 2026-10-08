@@ -1,8 +1,6 @@
-
 import Image from "next/image";
 import logo from "@/app/assets/market.png"
 import { Button } from "@heroui/react";
-import Link from "next/link";
 import NavLinks from "./NavLinks";
 import { dateToday } from "../constants/NumberAndUnits";
 
