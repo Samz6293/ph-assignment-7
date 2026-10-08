@@ -2,11 +2,11 @@ import MarqueeText from "react-marquee-text"
 import "react-marquee-text/dist/styles.css"
 import { formatter, unitBn } from "../constants/NumberAndUnits";
 import { Product, Unit } from "../types";
+import { getProducts } from "../constants/fetch";
 
 
 export default async function Marquee() {
-    const response = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
-    const data = await response.json();
+    const data = await getProducts();
     const fluctuatedProducts = data.filter((product: Product) => product.change.dir !== "flat");
     return (
         <div className="py-2 bg-base-100 border border-base-300">

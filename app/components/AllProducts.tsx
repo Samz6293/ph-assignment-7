@@ -1,10 +1,10 @@
+import { getProducts } from "../constants/fetch";
 import { formatter } from "../constants/NumberAndUnits";
 import { Product } from "../types";
 import ProductCard from "./ProductCard";
 
 export default async function AllProducts() {
-    const response = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
-    const data = await response.json();
+    const data = await getProducts();
 
     return (
         <section id="all-products" className="content-box flex flex-col gap-2 scroll-mt-30">

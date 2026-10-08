@@ -1,9 +1,9 @@
+import { getProducts } from "../constants/fetch";
 import { Product } from "../types";
 import ProductCard from "./ProductCard";
 
 export default async function HighPrice() {
-    const response = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
-    const data = await response.json();
+    const data = await getProducts();
     const risers = data.filter((product: Product) => product.change.dir === "up")
     .sort((a: Product,b: Product) => b.change.pct - a.change.pct)
     .slice(0,6);

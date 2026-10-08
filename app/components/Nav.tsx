@@ -1,10 +1,10 @@
 import Image from "next/image";
 import logo from "@/app/assets/market.png"
-import { Button } from "@heroui/react";
 import NavLinks from "./NavLinks";
 import { dateToday } from "../constants/NumberAndUnits";
 import Navigation from "./NavDrawer";
 import AuthButtons from "./AuthButtons";
+import Link from "next/link";
 
 
 export default function Nav() {
@@ -17,6 +17,7 @@ export default function Nav() {
                 {/* logo + buttons */}
                 <div className="flex items-center justify-between ">
                     {/* logo name date */}
+                    <Link href={"/"} className="hover:bg-base-200">
                     <div className="flex items-center gap-2">
                         <div>
                             <Image src={logo} alt="bazar dor logo" width={40} height={40} className="bg-primary rounded-lg" />
@@ -26,6 +27,7 @@ export default function Nav() {
                             <p>{dateToday}</p>
                         </div>
                     </div>
+                    </Link>
 
                     {/* buttons */}
                     <AuthButtons className="hidden gap-2 lg:flex" />

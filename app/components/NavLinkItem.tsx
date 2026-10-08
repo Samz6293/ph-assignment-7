@@ -9,10 +9,9 @@ export default function NavLinkItem({ link }: { link: NavLink }) {
     const route = `/category/${link.id}`;
     return (
         <Link key={link.id} href={`/category/${link.id}`} className={`text-base-content text-xl font-semibold rounded-xl
-            hover:bg-base-300 hover:text-base-content `}>
-            <Button variant="ghost" className={`border-none text-xl ${pathname === route && "bg-primary text-primary-content"}
-            
             `}>
+            <Button variant="ghost" className={`border-none text-xl ${pathname === route && "bg-primary text-primary-content"}
+            hover:bg-base-300 hover:text-base-content`}>
                 {link.icon} {link.nameBn}
             </Button>
 

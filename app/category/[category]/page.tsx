@@ -1,12 +1,7 @@
 import ProductCard from "@/app/components/ProductCard";
+import { getCategoryDetails } from "@/app/constants/fetch";
 import { formatter } from "@/app/constants/NumberAndUnits";
 import { CategoryParams, Product } from "@/app/types";
-
-const getCategoryDetails = async (category: string) => {
-    const response = await fetch(`https://api.api-store.workers.dev/api/bazardor/products?category=${category}`);
-    const data = await response.json();
-    return data;
-}
 
 export default async function CategoryPage({ params }: CategoryParams) {
     const { category } = await params;
