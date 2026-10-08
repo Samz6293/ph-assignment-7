@@ -19,7 +19,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <html lang="en" className={`${hindSiliguri.className} antialiased bg-base-200`}>
             <body className="text-base-content min-h-screen flex flex-col">
                 <Nav />
-                <main className="flex-1">
+                <main className="flex-1 my-10">
                     {children}
                 </main>
                 <Footer />

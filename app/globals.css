@@ -33,6 +33,11 @@
     @apply rounded-lg px-4 text-base-content border;
   }
 }
+
 @utility content-box {
     @apply mx-auto max-w-6xl w-[95%];
+}
+
+@utility btn-primary {
+    @apply bg-primary border border-primary-strong text-primary-content shadow shadow-primary/70 hover:bg-hover-link-primary;
 }

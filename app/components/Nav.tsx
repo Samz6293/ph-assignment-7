@@ -4,6 +4,7 @@ import logo from "@/app/assets/market.png"
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import NavLinks from "./NavLinks";
+import { dateToday } from "../constants/date";
 
 
 export default function Nav() {
@@ -22,17 +23,14 @@ export default function Nav() {
                         </div>
                         <div>
                             <h2 className=" font-bold text-xl">বাজার দর</h2>
-                            <p>{new Date().toLocaleDateString("bn-BD", {
-                                weekday: "long", day: "numeric",
-                                month: "long", year: "numeric", timeZone: "Asia/Dhaka"
-                            })}</p>
+                            <p>{dateToday}</p>
                         </div>
                     </div>
 
                     {/* buttons */}
                     <div className="flex gap-2">
                         <Button className={"bg-base-100 hover:bg-base-300"}>সাইন ইন</Button>
-                        <Button className={" bg-primary border border-primary-strong text-primary-content shadow shadow-primary/70 hover:bg-hover-link-primary"}>
+                        <Button className={"btn-primary"}>
                             সাইন আপ
                         </Button>
                     </div>
