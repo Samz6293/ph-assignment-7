@@ -4,7 +4,8 @@ import { ProductCardProps, Unit } from "../types";
 export default function ProductCard({ product }: ProductCardProps) {
     return (
         // wrapper
-        <div className="bg-base-100 border border-base-300 rounded-2xl p-4 flex flex-col gap-3">
+        <div className="bg-base-100 border border-base-300 rounded-2xl p-4 flex flex-col gap-3
+        hover:border-primary">
 
             {/* image, name, unit */}
             <div className="flex gap-3 items-center">

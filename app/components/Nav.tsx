@@ -10,7 +10,7 @@ import { dateToday } from "../constants/NumberAndUnits";
 export default function Nav() {
     return (
 
-        <nav className="bg-base-100 border border-bg-base-300">
+        <nav className="sticky top-0 z-50 bg-base-100 border border-bg-base-300">
 
             <div className="content-box flex flex-col gap-3 py-3">
 
