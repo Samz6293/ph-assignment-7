@@ -48,3 +48,7 @@ export interface Unit {
 export interface CategoryParams {
     params: Promise<{category: string}>
 }
+
+export interface ProductDetailsParams {
+    params: Promise<{slug: string}>
+}

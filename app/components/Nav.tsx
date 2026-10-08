@@ -17,7 +17,7 @@ export default function Nav() {
                 {/* logo + buttons */}
                 <div className="flex items-center justify-between ">
                     {/* logo name date */}
-                    <Link href={"/"} className="hover:bg-base-200">
+                    <Link href={"/"} className=" px-3 py-1 rounded-lg hover:bg-base-300">
                     <div className="flex items-center gap-2">
                         <div>
                             <Image src={logo} alt="bazar dor logo" width={40} height={40} className="bg-primary rounded-lg" />
@@ -35,8 +35,7 @@ export default function Nav() {
                 </div>
 
                 {/* links */}
-                <NavLinks className="hidden gap-4 justify-center
-        lg:flex"/>
+                <NavLinks className="hidden gap-4 justify-center lg:flex"/>
             </div>
         </nav>
     )

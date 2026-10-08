@@ -17,7 +17,7 @@ export default function Navigation() {
                     <Drawer.Dialog>
                         <Drawer.CloseTrigger />
                         <Drawer.Header>
-                            <Drawer.Heading>Navigation</Drawer.Heading>
+                            <Drawer.Heading>ন্যাভিগেশন</Drawer.Heading>
                         </Drawer.Header>
                         <Drawer.Body>
                             <nav className="flex flex-col gap-1 justify-between">
