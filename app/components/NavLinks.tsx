@@ -2,11 +2,10 @@ import { getCategories } from "../constants/fetch";
 import { NavLink } from "../types";
 import NavLinkItem from "./NavLinkItem";
 
-export default async function NavLinks({ className }: { className?: string }) {
-    const navLinks = await getCategories();
+export default function NavLinks({ className, links }: { className?: string, links:NavLink[] }) {
     return (
         <div className={className}>
-            {navLinks.map((link: NavLink) => <NavLinkItem key={link.id} link={link} /> )}
+            {links.map((link: NavLink) => <NavLinkItem key={link.id} link={link} /> )}
         </div>
     )
 }

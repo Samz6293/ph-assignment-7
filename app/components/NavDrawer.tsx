@@ -1,11 +1,11 @@
-import type { ComponentType, SVGProps } from "react";
 
 import { Bars } from "@gravity-ui/icons";
 import { Button, Drawer } from "@heroui/react";
 import NavLinks from "./NavLinks";
 import AuthButtons from "./AuthButtons";
+import { NavLink } from "../types";
 
-export default function Navigation() {
+export default function Navigation({links}:{links:NavLink[]}) {
 
     return (
         <Drawer>
@@ -21,7 +21,7 @@ export default function Navigation() {
                         </Drawer.Header>
                         <Drawer.Body>
                             <nav className="flex flex-col gap-1 justify-between">
-                                <NavLinks className="flex flex-col gap-2"/>
+                                <NavLinks className="flex flex-col gap-2" links={links}/>
                             </nav>
 
                         </Drawer.Body>

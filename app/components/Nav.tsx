@@ -5,9 +5,11 @@ import { dateToday } from "../constants/NumberAndUnits";
 import Navigation from "./NavDrawer";
 import AuthButtons from "./AuthButtons";
 import Link from "next/link";
+import { getCategories } from "../constants/fetch";
 
 
-export default function Nav() {
+export default async function Nav() {
+    const navLinks = await getCategories();
     return (
 
         <nav className="sticky top-0 z-50 bg-base-100 border border-bg-base-300">
@@ -31,11 +33,11 @@ export default function Nav() {
 
                     {/* buttons */}
                     <AuthButtons className="hidden gap-2 lg:flex" />
-                    <Navigation/>
+                    <Navigation links={navLinks}/>
                 </div>
 
                 {/* links */}
-                <NavLinks className="hidden gap-4 justify-center lg:flex"/>
+                <NavLinks className="hidden gap-4 justify-center lg:flex" links={navLinks}/>
             </div>
         </nav>
     )
