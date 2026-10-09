@@ -16,7 +16,6 @@ export function SignUp() {
                     const formData = new FormData(e.currentTarget);
                     const user = Object.fromEntries(formData.entries()) as 
                     {name: string, email: string, password: string, confirmPassword: string};
-                    console.log(user);
 const { data, error } = await authClient.signUp.email({
         ...user,
         callbackURL: "/dashboard" // A URL to redirect to after the user verifies their email (optional)
@@ -95,11 +94,11 @@ const { data, error } = await authClient.signUp.email({
 
                 <div className="flex flex-col justify-between items-center gap-2 mt-6 text-base-content
                 sm:flex-row">
-                    <Button className={"font-semibold"} variant="ghost">
+                    <Button fullWidth className={"font-semibold"} variant="ghost">
                         <Icon icon="devicon:google" /> Google দিয়ে চালিয়ে যান
                     </Button>
 
-                    <Button className={"font-semibold"} variant="ghost">
+                    <Button fullWidth className={"font-semibold"} variant="ghost">
                         <Icon icon="mdi:github" /> GitHub দিয়ে চালিয়ে যান
                     </Button>
                 </div>

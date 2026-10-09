@@ -7,7 +7,7 @@ export default function SignInPage() {
             <h2>সাইন ইন</h2>
             <p className="text-base-content/70 text-center">বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>
             <div className="mt-6 w-full max-w-110">
-            {/* <SignIn /> */}
+            <SignIn />
             </div>
             <Link href={"/"}>
                 <p className="text-base-content/70 text-sm mt-6 hover:text-base-content/50">← হোম পেজে ফিরে যান</p>

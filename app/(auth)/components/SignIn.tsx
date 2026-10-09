@@ -1,36 +1,25 @@
 "use client";
 
 import { Icon } from "@iconify/react";
-import {
-    Button,
-    FieldError,
-    Fieldset,
-    Form,
-    Input,
-    Label,
-    Surface,
-    TextField,
-} from "@heroui/react";
+import { Button, FieldError, Fieldset, Form, Input, Label, Surface, TextField } from "@heroui/react";
 import Link from "next/link";
+import { authClient } from "@/app/lib/auth-client";
 
 export function SignIn() {
-    // const onSubmit = (e: React<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     const formData = new FormData(e.currentTarget);
-    //     const data: Record<string, string> = {};
-
-    //     // Convert FormData to plain object
-    //     formData.forEach((value, key) => {
-    //         data[key] = value.toString();
-    //     });
-
-    //     alert("Form submitted successfully!");
-    // };
-// onSubmit={onSubmit}
     return (
         <div className="flex items-center justify-center rounded-2xl bg-base-100 border border-base-300 p-6">
             <Surface className="w-full">
-                <Form >
+                <Form onSubmit={async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.currentTarget);
+                    const user = Object.fromEntries(formData.entries()) as 
+                    {name: string, email: string, password: string};
+                    const { data, error } = await authClient.signIn.email({
+                        ...user,
+                        callbackURL: "/"
+                    });
+                    console.log(data, error);
+                    }}>
                     <Fieldset className="w-full">
                         <Fieldset.Group>
 
@@ -74,11 +63,11 @@ export function SignIn() {
                 </div>
                 <div className="flex flex-col justify-between items-center gap-2 mt-6 text-base-content
                 sm:flex-row">
-                    <Button className={"font-semibold"} variant="ghost">
+                    <Button fullWidth className={"font-semibold"} variant="ghost">
                         <Icon icon="devicon:google" />
                         Google দিয়ে চালিয়ে যান
                     </Button>
-                    <Button className={"font-semibold"} variant="ghost">
+                    <Button fullWidth className={"font-semibold"} variant="ghost">
                         <Icon icon="mdi:github" />
                         GitHub দিয়ে চালিয়ে যান
                     </Button>
