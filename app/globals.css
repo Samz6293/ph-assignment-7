@@ -44,6 +44,7 @@
     .table__row:last-child .table__cell {
         border-bottom: none;
     }
+
 }
 
 @layer base {

@@ -1,7 +1,7 @@
-import ProductCard from "@/app/components/ProductCard";
 import { getCategoryDetails } from "@/app/constants/fetch";
 import { formatter } from "@/app/constants/NumberAndUnits";
 import { CategoryParams, Product } from "@/app/types";
+import ProductGrid from "../components/ProductGrid";
 
 export default async function CategoryPage({ params }: CategoryParams) {
     const { category } = await params;
@@ -17,19 +17,8 @@ export default async function CategoryPage({ params }: CategoryParams) {
                     <p className="text-base-content/70">{formatter.format(categoryDetails.length)}টি পণ্যের আজকের দাম ও পরিবর্তন</p>
                 </div>
             </div>
-
-            {/* total and sort */}
-            <div className="flex justify-between">
-                <p className="text-base-content/70">মোট {formatter.format(categoryDetails.length)}টি পণ্য দেখানো হচ্ছে</p>
-                <p>TODO: sort</p>
-            </div>
-
-            {/* products */}
-            <div className="grid grid-cols-1 gap-4
-            md:grid-cols-2 lg:grid-cols-3">
-                {categoryDetails.map((product: Product) => <ProductCard key={product.id} product={product}></ProductCard>)}
-            </div>
-
+            
+            <ProductGrid products={categoryDetails} />
         </div>
     )
 }
