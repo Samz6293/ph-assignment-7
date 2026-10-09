@@ -13,7 +13,7 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 
-export function SignIn() {
+export function SignUp() {
     const onSubmit = (e: React<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -24,7 +24,6 @@ export function SignIn() {
             data[key] = value.toString();
         });
 
-        alert("Form submitted successfully!");
     };
 
     return (
@@ -33,11 +32,24 @@ export function SignIn() {
                 <Form onSubmit={onSubmit}>
                     <Fieldset className="w-full">
                         <Fieldset.Group>
-
+                            <TextField
+                                isRequired
+                                name="name"
+                                validate={(value) => {
+                                    if (value.length < 3) {
+                                        return "নাম কমপক্ষে ৩টি অক্ষরের হতে হবে";
+                                    }
+                                    return null;
+                                }}
+                            >
+                                <Label>নাম</Label>
+                                <Input variant="secondary" placeholder="যেমন: রহিম উদ্দিন" />
+                                <FieldError />
+                            </TextField>
                             <TextField isRequired name="email" type="email">
                                 <Label className="text-base-content">ইমেইল</Label>
                                 <Input placeholder="you@example.com" variant="secondary" />
-                                <FieldError />
+                                <FieldError>এই ঘরটি পূরণ করুন।</FieldError>
                             </TextField>
                             <TextField
                                 isRequired
@@ -46,13 +58,13 @@ export function SignIn() {
                                 type="password"
                                 validate={(value) => {
                                     if (value.length < 8) {
-                                        return "Password must be at least 8 characters";
+                                        return "পাসওয়ার্ড কমপক্ষে ৮টি অক্ষরের হতে হবে";
                                     }
                                     if (!/[A-Z]/.test(value)) {
-                                        return "Password must contain at least one uppercase letter";
+                                        return "পাসওয়ার্ডে অন্তত একটি বড় হাতের অক্ষর থাকতে হবে";
                                     }
                                     if (!/[0-9]/.test(value)) {
-                                        return "Password must contain at least one number";
+                                        return "পাসওয়ার্ডে অন্তত একটি সংখ্যা থাকতে হবে";
                                     }
                                     return null;
                                 }}
@@ -83,7 +95,7 @@ export function SignIn() {
                         GitHub দিয়ে চালিয়ে যান
                     </Button>
                 </div>
-                <p className="text-center mt-6">অ্যাকাউন্ট নেই? <Link href={"/sign-up"}><span className="text-primary underline hover:text-primary/80">সাইন আপ করুন</span></Link></p>
+                <p className="text-center mt-6">অ্যাকাউন্ট আছে? <Link href={"/sign-in"}><span className="text-primary underline hover:text-primary/70">সাইন ইন  করুন</span></Link></p>
             </Surface>
         </div>
     );

@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 const timer = 120;
 export async function getCategories() {
     try {
@@ -13,7 +15,7 @@ export async function getCategories() {
     }
 }
 
-export async function getProducts() {
+export const getProducts = cache(async () => {
     try {
         const response = await fetch("https://api.api-store.workers.dev/api/bazardor/products", { next: { revalidate: timer } });
         if (!response.ok) throw new Error("First api failed. Trying second api");
@@ -26,7 +28,7 @@ export async function getProducts() {
         return data;
     }
     
-}
+})
 
 export async function getCategoryDetails(category: string) {
     try {

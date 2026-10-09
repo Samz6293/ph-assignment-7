@@ -32,7 +32,7 @@ export default async function ProductDetailsPage({ params }: ProductDetailsParam
                     <div>
                         <h1>{product.nameBn}</h1>
                         <p className="text-base-content/70">প্রতি {unitBn[product.unit as keyof Unit]} · {product.categoryNameBn}</p>
-                        <p>গতকালের তুলনায় আজ দাম {priceDifference > 0 ? <span className="font-semibold">বেড়েছে</span> : <span className="font-semibold">কমেছে</span>} · {formatter.format(Math.abs(priceDifference))} টাকা</p>
+                        <p>গতকালের তুলনায় আজ দাম {priceDifference === 0 ? <span className="font-semibold">অপরিবর্তিত</span> : priceDifference > 0 ? <span className="font-semibold">বেড়েছে</span> : <span className="font-semibold">কমেছে</span>} · {formatter.format(Math.abs(priceDifference))} টাকা</p>
                     </div>
                 </div>
 
@@ -41,8 +41,9 @@ export default async function ProductDetailsPage({ params }: ProductDetailsParam
                     <p>আজকের দাম</p>
                     <h2 className="text-base-content">{formatter.format(product.today)}</h2>
                     <p>টাকা / {unitBn[product.unit as keyof Unit]}</p>
-                    <span className={`font-semibold ${product.change.pct < 0 ? "text-success" : "text-error"}`}>
-                        {product.change.pct < 0 ? <span>▼</span> : <span>▲</span>}{formatter.format(Math.abs(product.change.pct))}%
+                    <span className={`font-semibold text-xs bg-base-200 rounded-full px-2 py-1 ${product.change.pct === 0 ? "text-base-content" : product.change.pct < 0 ? "text-success" : "text-error"}`}>
+                        {product.change.pct === 0 ? <span>-</span> :
+                            product.change.pct < 0 ? <span>▼</span> : <span>▲</span>} {formatter.format(Math.abs(product.change.pct))}%
                     </span>
                 </div>
             </div>
