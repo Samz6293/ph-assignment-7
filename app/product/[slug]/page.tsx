@@ -1,8 +1,10 @@
 import { getProducts } from "@/app/constants/fetch";
 import { formatter, unitBn } from "@/app/constants/NumberAndUnits";
 import { Market, Product, ProductDetailsParams, Unit } from "@/app/types";
+import { Table } from "@heroui/react";
 
 export default async function ProductDetailsPage({ params }: ProductDetailsParams) {
+
     const { slug } = await params;
     const data = await getProducts();
     const filteredProduct: Product[] = data.filter((product: Product) => product.slug === slug);
@@ -12,9 +14,11 @@ export default async function ProductDetailsPage({ params }: ProductDetailsParam
     const priceDifference = product.today - product.yesterday;
     const minPrice = Math.min(...product.markets.map(price => price.min));
     const maxPrice = Math.max(...product.markets.map(price => price.max));
-    const avgPrice = Math.round(product.markets.reduce((acc: number, curr: Market) => (
-            acc + (curr.min + curr.max) / 2
-            ),0) / product.markets.length); // adding average of all bazars first then finding true average
+
+    // adding average of all bazars first then finding true average
+    const avgPrice = Math.round(product.markets.reduce((acc: number, curr: Market) =>
+        (acc + (curr.min + curr.max) / 2), 0) / product.markets.length);
+
     return (
         // wrapper
         <div className="content-box flex flex-col gap-6">
@@ -27,8 +31,8 @@ export default async function ProductDetailsPage({ params }: ProductDetailsParam
                     <p className="text-4xl bg-base-200 rounded-2xl p-5">{product.image}</p>
                     <div>
                         <h1>{product.nameBn}</h1>
-                        <p className="text-base-content/70">প্রতি {unitBn[product.unit as keyof Unit]} {product.categoryNameBn}</p>
-                        <p>গতকালের তুলনায় আজ দাম {priceDifference > 0 ? <span className="font-semibold">বেড়েছে</span> : <span className="font-semibold">কমেছে</span>}  · {formatter.format(Math.abs(priceDifference))} টাকা</p>
+                        <p className="text-base-content/70">প্রতি {unitBn[product.unit as keyof Unit]} · {product.categoryNameBn}</p>
+                        <p>গতকালের তুলনায় আজ দাম {priceDifference > 0 ? <span className="font-semibold">বেড়েছে</span> : <span className="font-semibold">কমেছে</span>} · {formatter.format(Math.abs(priceDifference))} টাকা</p>
                     </div>
                 </div>
 
@@ -73,6 +77,32 @@ export default async function ProductDetailsPage({ params }: ProductDetailsParam
 
                 <h2>বাজারভিত্তিক আজকের দাম</h2>
 
+                {/* Table */}
+                <Table>
+                    <Table.ScrollContainer>
+                        <Table.Content aria-label="বাজারভিত্তিক আজকের দাম" className="">
+                            <Table.Header>
+                                <Table.Column isRowHeader>বাজার</Table.Column>
+                                <Table.Column>বিভাগ</Table.Column>
+                                <Table.Column>সর্বনিম্ন</Table.Column>
+                                <Table.Column>সর্বাধিক</Table.Column>
+                                <Table.Column>গড়</Table.Column>
+                            </Table.Header>
+
+                            <Table.Body>
+                                {product.markets.map((market: Market, index) => (
+                                    <Table.Row key={index}>
+                                        <Table.Cell className={"font-medium"}>{market.market}</Table.Cell>
+                                        <Table.Cell>{market.division}</Table.Cell>
+                                        <Table.Cell>{formatter.format(market.min)}</Table.Cell>
+                                        <Table.Cell>{formatter.format(market.max)}</Table.Cell>
+                                        <Table.Cell>{formatter.format((market.min + market.max) / 2)}</Table.Cell>
+                                    </Table.Row>
+                                ))}
+                            </Table.Body>
+                        </Table.Content>
+                    </Table.ScrollContainer>
+                </Table>
             </div>
         </div>
     )
