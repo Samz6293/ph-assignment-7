@@ -14,23 +14,23 @@ import {
 import Link from "next/link";
 
 export function SignIn() {
-    const onSubmit = (e: React<HTMLFormElement>) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const data: Record<string, string> = {};
+    // const onSubmit = (e: React<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     const formData = new FormData(e.currentTarget);
+    //     const data: Record<string, string> = {};
 
-        // Convert FormData to plain object
-        formData.forEach((value, key) => {
-            data[key] = value.toString();
-        });
+    //     // Convert FormData to plain object
+    //     formData.forEach((value, key) => {
+    //         data[key] = value.toString();
+    //     });
 
-        alert("Form submitted successfully!");
-    };
-
+    //     alert("Form submitted successfully!");
+    // };
+// onSubmit={onSubmit}
     return (
         <div className="flex items-center justify-center rounded-2xl bg-base-100 border border-base-300 p-6">
             <Surface className="w-full">
-                <Form onSubmit={onSubmit}>
+                <Form >
                     <Fieldset className="w-full">
                         <Fieldset.Group>
 
