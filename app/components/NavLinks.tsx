@@ -1,4 +1,3 @@
-import { getCategories } from "../constants/fetch";
 import { NavLink } from "../types";
 import NavLinkItem from "./NavLinkItem";
 
