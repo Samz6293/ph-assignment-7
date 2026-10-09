@@ -30,7 +30,7 @@ export function SignIn() {
 
     return (
         <div className="flex items-center justify-center rounded-2xl bg-base-100 border border-base-300 p-6">
-            <Surface className="w-full min-w-95">
+            <Surface className="w-full">
                 <Form onSubmit={onSubmit}>
                     <Fieldset className="w-full">
                         <Fieldset.Group>
@@ -68,15 +68,21 @@ export function SignIn() {
                         </Fieldset.Actions>
                     </Fieldset>
                 </Form>
-                <div className="flex justify-between gap-2 mt-6 text-base-content ">
-                <Button className={"font-semibold"} variant="ghost">
-                    <Icon icon="devicon:google" />
-                    Google দিয়ে চালিয়ে যান
-                </Button>
-                <Button className={"font-semibold"} variant="ghost">
-                    <Icon icon="mdi:github" />
-                    GitHub দিয়ে চালিয়ে যান
-                </Button>
+                <div className="flex items-center gap-3 my-6 text-sm text-base-content/70">
+                    <div className="h-px flex-1 bg-base-300" />
+                    <span>অথবা</span>
+                    <div className="h-px flex-1 bg-base-300" />
+                </div>
+                <div className="flex flex-col justify-between items-center gap-2 mt-6 text-base-content
+                sm:flex-row">
+                    <Button className={"font-semibold"} variant="ghost">
+                        <Icon icon="devicon:google" />
+                        Google দিয়ে চালিয়ে যান
+                    </Button>
+                    <Button className={"font-semibold"} variant="ghost">
+                        <Icon icon="mdi:github" />
+                        GitHub দিয়ে চালিয়ে যান
+                    </Button>
                 </div>
                 <p className="text-center mt-6">অ্যাকাউন্ট আছে? <Link href={"/sign-up"}><span className="text-primary">সাইন আপ করুন</span></Link></p>
             </Surface>

@@ -1,43 +1,48 @@
 @import "tailwindcss";
-@import "@heroui/styles"; 
+@import "@heroui/styles";
 
 /* *{ @apply border border-red-500}; */
 
 @theme {
-  --color-base-100: #fafcfa;
-  --color-base-200: #f0f5f0;
-  --color-base-300: #e1e8e1;
-  --color-base-content: #1d271f;
+    --color-base-100: #fafcfa;
+    --color-base-200: #f0f5f0;
+    --color-base-300: #e1e8e1;
+    --color-base-content: #1d271f;
 
-  --color-primary: #05893e;
-  --color-primary-content: #f3fbf4;
-  --color-primary-strong: #047f39;
-  --color-primary-stronger: #047c37;
+    --color-primary: #05893e;
+    --color-primary-content: #f3fbf4;
+    --color-primary-strong: #047f39;
+    --color-primary-stronger: #047c37;
 
-  --color-success: #1a9951;
-  --color-error: #d03739;
-  --color-error-content: #fff6f5;
+    --color-success: #1a9951;
+    --color-error: #d03739;
+    --color-error-content: #fff6f5;
 
-  --color-white: #ffffff;
+    --color-white: #ffffff;
 
-  --color-hover-neutral-bg: #dadeda;
-  --color-hover-neutral-border: #ccd0cc;
-  --color-hover-primary-border: #037333;
-  --color-hover-error-bg: #bd3133;
-  --color-hover-error-border: #b02d2f;
-  --color-hover-link-primary: #02642b;
+    --color-hover-neutral-bg: #dadeda;
+    --color-hover-neutral-border: #ccd0cc;
+    --color-hover-primary-border: #037333;
+    --color-hover-error-bg: #bd3133;
+    --color-hover-error-border: #b02d2f;
+    --color-hover-link-primary: #02642b;
 }
 
 @layer components {
-  .button {
-    @apply rounded-lg px-4 text-base-content border;
-  }
+    .button {
+        @apply rounded-lg px-4 text-base-content border;
+    }
 }
 
 @layer base {
-  h2 {
-    @apply text-xl font-bold;
-  }
+
+    h1 {
+        @apply text-3xl font-bold;
+    }
+
+    h2 {
+        @apply text-xl font-bold;
+    }
 }
 
 @utility content-box {
@@ -46,4 +51,8 @@
 
 @utility btn-primary {
     @apply bg-primary border border-primary-strong text-primary-content shadow shadow-primary/70 hover:bg-hover-link-primary;
+}
+
+@utility detail-card {
+    @apply flex flex-col border border-base-300 rounded-2xl px-6 py-4;
 }
