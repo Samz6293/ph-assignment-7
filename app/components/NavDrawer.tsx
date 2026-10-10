@@ -25,8 +25,8 @@ export default function Navigation({links}:{links:NavLink[]}) {
                             </nav>
 
                         </Drawer.Body>
-                        <Drawer.Footer>
-                                <AuthButtons className="flex gap-2 mx-auto" />
+                        <Drawer.Footer className="flex justify-start">
+                                <AuthButtons className="flex gap-2" />
                         </Drawer.Footer>
                     </Drawer.Dialog>
                 </Drawer.Content>

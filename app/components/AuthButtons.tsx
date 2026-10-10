@@ -1,35 +1,78 @@
 "use client";
-import { Button, Spinner } from '@heroui/react'
+import { Avatar, Button, Dropdown, Key, Label, Spinner } from '@heroui/react'
 import Link from 'next/link'
 import { authClient } from '../lib/auth-client'
+import { useRouter } from 'next/navigation';
 
 export default function AuthButtons({ className }: { className?: string }) {
-    const {
-        data: session,
-        isPending,
-        error,
-        refetch
-    } = authClient.useSession()
+    const { data: session, isPending} = authClient.useSession()
     const user = session?.user;
-    console.log(user?.name);
-    return (
-        <>
-            {isPending ? <Spinner color="success" />
-            : user ? 
-            <div className=''>
-                <p className="rounded-2xl bg-base-200 px-3 py-1">{user?.name.charAt(0) as string | null}</p>
-            </div>
-            :
-            <div className={className}>
-                <Link href="/sign-in">
-                    <Button slot={"close"} className={"bg-base-100 hover:bg-base-300"}>সাইন ইন</Button>
-                </Link>
+    const name = user?.name.split(" ")[0];
 
-                <Link href="/sign-up">
-                    <Button slot={"close"} className={"btn-primary"}>সাইন আপ</Button>
-                </Link>
-            </div>
+    const router = useRouter();
+    const handleAction = async(key: Key) => {
+        if (key === "profile") router.push("/")
+        if(key == "logout") {
+            await authClient.signOut({
+  fetchOptions: {
+    onSuccess: () => {
+      router.push("/");
+    },
+  },
+});
+        }
+    }
+    return (
+        <div className={className}>
+            {isPending ? <Spinner color="success" />
+                : user ?
+                    <div className='flex items-center gap-2'>
+                        {/* dropdown */}
+                        <div className=''>
+                            <Dropdown>
+                                <Dropdown.Trigger className=" flex items-center gap-2">
+                                    <p>{name}</p>
+                                    <Avatar>
+                                        <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                                    </Avatar>
+                                </Dropdown.Trigger>
+                                <Dropdown.Popover>
+                                    <div className="px-3 pt-3 pb-1">
+                                        <div className="flex items-center gap-2">
+                                            <Avatar size="sm">
+                                                <Avatar.Fallback delayMs={600}>{user?.name.charAt(0)}</Avatar.Fallback>
+                                            </Avatar>
+                                            <div className="flex flex-col gap-0">
+                                                <p className="text-sm leading-5 font-medium">{user?.name}</p>
+                                                <p className="text-xs leading-none text-muted">{user?.email}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <Dropdown.Menu onAction={handleAction}>
+                                        <Dropdown.Item id="profile" textValue="Profile">
+                                            <Label>👤 আমার প্রোফাইল</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item id="logout" textValue="Logout" variant="danger">
+                                            <div className="flex w-full items-center justify-between gap-2">
+                                                <Label>↩ সাইন আউট</Label>
+                                            </div>
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
+                            </Dropdown>
+                        </div>
+                    </div>
+                    :
+                    <div className={className}>
+                        <Link href="/sign-in">
+                            <Button slot={"close"} className={"bg-base-100 hover:bg-base-300"}>সাইন ইন</Button>
+                        </Link>
+
+                        <Link href="/sign-up">
+                            <Button slot={"close"} className={"btn-primary"}>সাইন আপ</Button>
+                        </Link>
+                    </div>
             }
-        </>
+        </div>
     )
 }

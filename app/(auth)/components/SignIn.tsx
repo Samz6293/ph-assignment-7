@@ -1,7 +1,7 @@
 "use client";
 
 import { Icon } from "@iconify/react";
-import { Button, FieldError, Fieldset, Form, Input, Label, Surface, TextField } from "@heroui/react";
+import { Button, FieldError, Fieldset, Form, Input, Label, Surface, TextField, toast } from "@heroui/react";
 import Link from "next/link";
 import { authClient } from "@/app/lib/auth-client";
 
@@ -12,14 +12,24 @@ export function SignIn() {
                 <Form onSubmit={async (e) => {
                     e.preventDefault();
                     const formData = new FormData(e.currentTarget);
-                    const user = Object.fromEntries(formData.entries()) as 
-                    {name: string, email: string, password: string};
+                    const user = Object.fromEntries(formData.entries()) as
+                        { name: string, email: string, password: string };
                     const { data, error } = await authClient.signIn.email({
                         ...user,
                         callbackURL: "/"
                     });
-                    console.log(data, error);
-                    }}>
+                    if (data) {
+                        toast.success("সাইন-ইন সফল হয়েছে", {
+                            description: "আপনি এখন বিস্তারিত দেখতে পারবেন",
+                        });
+                    }
+                    if (error) {
+
+                        toast.danger("সাইন-ইন সফল হয়নি", {
+                            description: error.message
+                        });
+                    }
+                }}>
                     <Fieldset className="w-full">
                         <Fieldset.Group>
 

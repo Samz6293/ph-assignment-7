@@ -5,6 +5,7 @@ import { Button, FieldError, Fieldset, Form, Input, Label, Spinner, Surface, Tex
 import Link from "next/link";
 import { useState } from "react";
 import { authClient } from "@/app/lib/auth-client";
+import { redirect } from "next/navigation";
 
 export function SignUp() {
     const [password, setPassword] = useState("");
@@ -18,24 +19,36 @@ export function SignUp() {
                     {name: string, email: string, password: string, confirmPassword: string};
 const { data, error } = await authClient.signUp.email({
         ...user,
-        callbackURL: "/dashboard" // A URL to redirect to after the user verifies their email (optional)
-    }, {
-        onRequest: (ctx) => {
-            <div className="flex items-center gap-4">
-                <Spinner />
-            </div>
-        },
-        onSuccess: (ctx) => {
-            //redirect to the dashboard or sign in page
+    });
+
+    if(data) {
             toast.success("আপনার রেজিস্ট্রেশন সফল হয়েছে", {
               description: "আপনি এখন বিস্তারিত দেখতে পারবেন",
             });
-        },
-        onError: (ctx) => {
-            // display the error message
-            toast.danger("আপনার রেজিস্ট্রেশন সফল হয়নি।");
-        },
-});
+            redirect("/");
+    }
+    if(error) {
+        toast.danger("আপনার রেজিস্ট্রেশন সফল হয়নি।", {
+            description: error.message
+        });
+    }
+
+    
+    
+//     , {
+//         onRequest: (ctx) => {
+//             <div className="flex items-center gap-4">
+//                 <Spinner />
+//             </div>
+//         },
+//         onSuccess: (ctx) => {
+//             //redirect to the dashboard or sign in page
+//         },
+//         onError: (ctx) => {
+//             // display the error message
+//             toast.danger("আপনার রেজিস্ট্রেশন সফল হয়নি।");
+//         },
+// });
                 }}>
                     <Fieldset className="w-full">
                         <Fieldset.Group>
