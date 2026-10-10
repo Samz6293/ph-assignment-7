@@ -1,5 +1,5 @@
 "use client";
-import { Avatar, Button, Dropdown, Key, Label, Spinner } from '@heroui/react'
+import { Avatar, Button, Dropdown, Key, Label, Spinner, toast } from '@heroui/react'
 import Link from 'next/link'
 import { authClient } from '../lib/auth-client'
 import { useRouter } from 'next/navigation';
@@ -16,6 +16,7 @@ export default function AuthButtons({ className }: { className?: string }) {
             await authClient.signOut({
                 fetchOptions: {
                     onSuccess: () => {
+                        toast.danger("সাইন-আউট সফল হয়েছে");
                         router.push("/");
                     },
                 },
@@ -29,8 +30,8 @@ export default function AuthButtons({ className }: { className?: string }) {
                     <div className='flex items-center gap-2'>
                         {/* dropdown */}
                         <div>
-                            <Dropdown>
-                                <Dropdown.Trigger className="flex items-center gap-2">
+                            <Dropdown className='min-w-30'>
+                                <Dropdown.Trigger className="flex items-center gap-2 ">
                                     <p>{name}</p>
                                     <Avatar>
                                         <Avatar.Image alt="user profile avatar" src={user.image as string} />
@@ -52,11 +53,15 @@ export default function AuthButtons({ className }: { className?: string }) {
                                     </div>
                                     <Dropdown.Menu onAction={handleAction}>
                                         <Dropdown.Item id="profile" textValue="Profile">
-                                            <Label>👤 আমার প্রোফাইল</Label>
+                                            <Button slot={"close"} className={"border-none"} variant='ghost'>
+                                                <Label>👤 আমার প্রোফাইল</Label>
+                                            </Button>
                                         </Dropdown.Item>
                                         <Dropdown.Item id="logout" textValue="Logout" variant="danger">
                                             <div className="flex w-full items-center justify-between gap-2">
-                                                <Label>↩ সাইন আউট</Label>
+                                                <Button slot={"close"} variant='ghost' className={"border-error text-error"}>
+                                                    <Label>↩ সাইন আউট</Label>
+                                                </Button>
                                             </div>
                                         </Dropdown.Item>
                                     </Dropdown.Menu>

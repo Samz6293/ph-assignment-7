@@ -1,6 +1,6 @@
 "use client"
 import { authClient } from "@/app/lib/auth-client";
-import { Avatar, Button, FieldError, Fieldset, Form, Input, Label, Surface, TextField } from "@heroui/react";
+import { Avatar, Button, FieldError, Fieldset, Form, Input, Label, Surface, TextField, toast } from "@heroui/react";
 import { useRouter } from "next/navigation";
 
 export default function MyProfilePage() {
@@ -12,6 +12,7 @@ export default function MyProfilePage() {
             await authClient.signOut({
                 fetchOptions: {
                     onSuccess: () => {
+                        toast.danger("সাইন-আউট সফল হয়েছে");
                         router.push("/");
                     },
                 },

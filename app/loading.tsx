@@ -1,5 +1,9 @@
+import { SingleShimmer } from "./components/ProductSkeleton";
+
 export default function loading() {
   return (
-    <div>loading</div>
+    <div>
+<SingleShimmer/>
+    </div>
   )
 }
