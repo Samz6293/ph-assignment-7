@@ -53,15 +53,11 @@ export default function AuthButtons({ className }: { className?: string }) {
                                     </div>
                                     <Dropdown.Menu onAction={handleAction}>
                                         <Dropdown.Item id="profile" textValue="Profile">
-                                            <Button slot={"close"} className={"border-none"} variant='ghost'>
                                                 <Label>👤 আমার প্রোফাইল</Label>
-                                            </Button>
                                         </Dropdown.Item>
                                         <Dropdown.Item id="logout" textValue="Logout" variant="danger">
                                             <div className="flex w-full items-center justify-between gap-2">
-                                                <Button slot={"close"} variant='ghost' className={"border-error text-error"}>
                                                     <Label>↩ সাইন আউট</Label>
-                                                </Button>
                                             </div>
                                         </Dropdown.Item>
                                     </Dropdown.Menu>

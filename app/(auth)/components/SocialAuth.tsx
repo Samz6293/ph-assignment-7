@@ -9,7 +9,7 @@ export default function SocialAuth() {
                 provider: "github"
             });
             if (data) {
-                toast.success("GitHub সাথে সফল হয়েছে", {
+                toast.success("GitHub সাইন ইন সফল হয়েছে", {
                     description: "আপনি এখন বিস্তারিত দেখতে পারবেন",
                 });
             }
@@ -26,7 +26,7 @@ export default function SocialAuth() {
                 provider: "google",
             });
             if (data) {
-                toast.success("Google এর সাথে সফল হয়েছে", {
+                toast.success("Google সাইন ইন সফল হয়েছে", {
                     description: "আপনি এখন বিস্তারিত দেখতে পারবেন",
                 });
             }
