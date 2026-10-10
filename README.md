@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# বাজার দর / BazarDor
+
+A modern Bangladeshi grocery price tracking platform that helps users monitor daily market prices across different categories and compare costs between markets in one place.
+
+## Overview
+
+বাজার দর (BazarDor) is a Next.js-based web application designed to make grocery price tracking simple and informative for consumers across Bangladesh. The platform displays prices for everyday essentials such as rice, oil, vegetables, fish, meat, eggs, and spices, while highlighting trends like daily price increases and decreases.
+
+Users can browse products by category, view the current price, compare market-wise price ranges, and inspect historical movement indicators to make more informed buying decisions.
+
+## Technologies Used
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- HeroUI
+- Better Auth
+- MongoDB
+- ESLint
+- Node.js
+
+## Key Features
+
+1. Daily Grocery Price Tracking
+   - View today’s prices for a wide range of essential products across Bangladeshi markets.
+
+2. Price Change Overview
+   - See which products have increased or decreased in price and track percentage changes at a glance.
+
+3. Category-Based Product Browsing
+   - Explore products by category and quickly find the items you need.
+
+4. Detailed Product and Market Comparison
+   - Open each product page to see average, minimum, maximum, and market-wise pricing information.
+
+5. Responsive and User-Friendly UI
+   - Clean, mobile-friendly interface with Bangla-friendly design and smooth navigation for desktop and mobile users.
+
+## Project Structure
+
+- `app/` — Main application pages, components, and route logic
+- `app/components/` — Reusable UI components
+- `app/constants/` — Shared app constants and API fetch logic
+- `app/data/` — Local fallback data
+- `app/lib/` — Authentication utilities
+- `app/product/[slug]/` — Product detail pages
+- `app/category/[category]/` — Category page listings
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
