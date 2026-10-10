@@ -2,10 +2,14 @@ import { getCategoryDetails } from "@/app/constants/fetch";
 import { formatter } from "@/app/constants/NumberAndUnits";
 import { CategoryParams, Product } from "@/app/types";
 import ProductGrid from "../components/ProductGrid";
+import { notFound } from "next/navigation";
 
 export default async function CategoryPage({ params }: CategoryParams) {
     const { category } = await params;
     const categoryDetails: Product[] = await getCategoryDetails(category);
+    if (categoryDetails.length === 0 || !categoryDetails) {
+        notFound();
+    }
     return (
         // wrapper
         <div className="content-box space-y-10">
@@ -17,7 +21,7 @@ export default async function CategoryPage({ params }: CategoryParams) {
                     <p className="text-base-content/70">{formatter.format(categoryDetails.length)}টি পণ্যের আজকের দাম ও পরিবর্তন</p>
                 </div>
             </div>
-            
+
             <ProductGrid products={categoryDetails} />
         </div>
     )

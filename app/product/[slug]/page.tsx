@@ -2,13 +2,14 @@ import { getProducts } from "@/app/constants/fetch";
 import { formatter, unitBn } from "@/app/constants/NumberAndUnits";
 import { Market, Product, ProductDetailsParams, Unit } from "@/app/types";
 import { Table } from "@heroui/react";
+import { notFound } from "next/navigation";
 
 export default async function ProductDetailsPage({ params }: ProductDetailsParams) {
 
     const { slug } = await params;
     const data = await getProducts();
-    const filteredProduct: Product[] = data.filter((product: Product) => product.slug === slug);
-    const product: Product = filteredProduct[0];
+    const product: Product = data.find((p: Product) => p.slug === slug);
+    if(!product) notFound();
 
     //data
     const priceDifference = product.today - product.yesterday;
