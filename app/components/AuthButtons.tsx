@@ -5,21 +5,21 @@ import { authClient } from '../lib/auth-client'
 import { useRouter } from 'next/navigation';
 
 export default function AuthButtons({ className }: { className?: string }) {
-    const { data: session, isPending} = authClient.useSession()
+    const { data: session, isPending } = authClient.useSession()
     const user = session?.user;
     const name = user?.name.split(" ")[0];
 
     const router = useRouter();
-    const handleAction = async(key: Key) => {
-        if (key === "profile") router.push("/")
-        if(key == "logout") {
+    const handleAction = async (key: Key) => {
+        if (key === "profile") router.push("/my-profile")
+        if (key == "logout") {
             await authClient.signOut({
-  fetchOptions: {
-    onSuccess: () => {
-      router.push("/");
-    },
-  },
-});
+                fetchOptions: {
+                    onSuccess: () => {
+                        router.push("/");
+                    },
+                },
+            });
         }
     }
     return (
@@ -28,11 +28,12 @@ export default function AuthButtons({ className }: { className?: string }) {
                 : user ?
                     <div className='flex items-center gap-2'>
                         {/* dropdown */}
-                        <div className=''>
+                        <div>
                             <Dropdown>
-                                <Dropdown.Trigger className=" flex items-center gap-2">
+                                <Dropdown.Trigger className="flex items-center gap-2">
                                     <p>{name}</p>
                                     <Avatar>
+                                        <Avatar.Image alt="user profile avatar" src={user.image as string} />
                                         <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
                                     </Avatar>
                                 </Dropdown.Trigger>
@@ -40,6 +41,7 @@ export default function AuthButtons({ className }: { className?: string }) {
                                     <div className="px-3 pt-3 pb-1">
                                         <div className="flex items-center gap-2">
                                             <Avatar size="sm">
+                                                <Avatar.Image alt="user profile avatar" src={user.image as string} />
                                                 <Avatar.Fallback delayMs={600}>{user?.name.charAt(0)}</Avatar.Fallback>
                                             </Avatar>
                                             <div className="flex flex-col gap-0">

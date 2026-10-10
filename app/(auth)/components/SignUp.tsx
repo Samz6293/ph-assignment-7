@@ -1,11 +1,11 @@
 "use client";
 
-import { Icon } from "@iconify/react";
 import { Button, FieldError, Fieldset, Form, Input, Label, Spinner, Surface, TextField, toast } from "@heroui/react";
 import Link from "next/link";
 import { useState } from "react";
 import { authClient } from "@/app/lib/auth-client";
 import { redirect } from "next/navigation";
+import SocialAuth from "./SocialAuth";
 
 export function SignUp() {
     const [password, setPassword] = useState("");
@@ -15,40 +15,23 @@ export function SignUp() {
                 <Form onSubmit={async (e) => {
                     e.preventDefault();
                     const formData = new FormData(e.currentTarget);
-                    const user = Object.fromEntries(formData.entries()) as 
-                    {name: string, email: string, password: string, confirmPassword: string};
-const { data, error } = await authClient.signUp.email({
-        ...user,
-    });
+                    const user = Object.fromEntries(formData.entries()) as
+                        { name: string, email: string, password: string, confirmPassword: string };
+                    const { data, error } = await authClient.signUp.email({
+                        ...user,
+                    });
 
-    if(data) {
-            toast.success("আপনার রেজিস্ট্রেশন সফল হয়েছে", {
-              description: "আপনি এখন বিস্তারিত দেখতে পারবেন",
-            });
-            redirect("/");
-    }
-    if(error) {
-        toast.danger("আপনার রেজিস্ট্রেশন সফল হয়নি।", {
-            description: error.message
-        });
-    }
-
-    
-    
-//     , {
-//         onRequest: (ctx) => {
-//             <div className="flex items-center gap-4">
-//                 <Spinner />
-//             </div>
-//         },
-//         onSuccess: (ctx) => {
-//             //redirect to the dashboard or sign in page
-//         },
-//         onError: (ctx) => {
-//             // display the error message
-//             toast.danger("আপনার রেজিস্ট্রেশন সফল হয়নি।");
-//         },
-// });
+                    if (data) {
+                        toast.success("আপনার রেজিস্ট্রেশন সফল হয়েছে", {
+                            description: "আপনি এখন বিস্তারিত দেখতে পারবেন",
+                        });
+                        redirect("/");
+                    }
+                    if (error) {
+                        toast.danger("আপনার রেজিস্ট্রেশন সফল হয়নি।", {
+                            description: error.message
+                        });
+                    }
                 }}>
                     <Fieldset className="w-full">
                         <Fieldset.Group>
@@ -99,22 +82,7 @@ const { data, error } = await authClient.signUp.email({
                     </Fieldset>
                 </Form>
 
-                <div className="flex items-center gap-3 my-6 text-sm text-base-content/70">
-                    <div className="h-px flex-1 bg-base-300" />
-                    <span>অথবা</span>
-                    <div className="h-px flex-1 bg-base-300" />
-                </div>
-
-                <div className="flex flex-col justify-between items-center gap-2 mt-6 text-base-content
-                sm:flex-row">
-                    <Button fullWidth className={"font-semibold"} variant="ghost">
-                        <Icon icon="devicon:google" /> Google দিয়ে চালিয়ে যান
-                    </Button>
-
-                    <Button fullWidth className={"font-semibold"} variant="ghost">
-                        <Icon icon="mdi:github" /> GitHub দিয়ে চালিয়ে যান
-                    </Button>
-                </div>
+                <SocialAuth />
 
                 <p className="text-center mt-6">অ্যাকাউন্ট আছে? <Link href={"/sign-in"}><span className="text-primary underline hover:text-primary/70">সাইন ইন  করুন</span></Link></p>
             </Surface>

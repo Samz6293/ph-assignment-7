@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import { Button, FieldError, Fieldset, Form, Input, Label, Surface, TextField, toast } from "@heroui/react";
 import Link from "next/link";
 import { authClient } from "@/app/lib/auth-client";
+import SocialAuth from "./SocialAuth";
 
 export function SignIn() {
     return (
@@ -66,22 +67,7 @@ export function SignIn() {
                         </Fieldset.Actions>
                     </Fieldset>
                 </Form>
-                <div className="flex items-center gap-3 my-6 text-sm text-base-content/70">
-                    <div className="h-px flex-1 bg-base-300" />
-                    <span>অথবা</span>
-                    <div className="h-px flex-1 bg-base-300" />
-                </div>
-                <div className="flex flex-col justify-between items-center gap-2 mt-6 text-base-content
-                sm:flex-row">
-                    <Button fullWidth className={"font-semibold"} variant="ghost">
-                        <Icon icon="devicon:google" />
-                        Google দিয়ে চালিয়ে যান
-                    </Button>
-                    <Button fullWidth className={"font-semibold"} variant="ghost">
-                        <Icon icon="mdi:github" />
-                        GitHub দিয়ে চালিয়ে যান
-                    </Button>
-                </div>
+                <SocialAuth />
                 <p className="text-center mt-6">অ্যাকাউন্ট নেই? <Link href={"/sign-up"}><span className="text-primary underline hover:text-primary/80">সাইন আপ করুন</span></Link></p>
             </Surface>
         </div>
