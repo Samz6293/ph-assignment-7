@@ -1,4 +1,5 @@
-import { Button } from "@heroui/react";
+import { cn } from "@heroui/react";
+import { buttonVariants } from "@heroui/styles";
 import Link from "next/link";
 
 export default function notFound() {
@@ -8,8 +9,8 @@ export default function notFound() {
         <h1>পাতাটি খুঁজে পাওয়া যায়নি</h1>
         <p className="text-base-content/70">আপনি যে পণ্য বা পাতাটি খুঁজছেন সেটি সরানো হয়েছে বা কখনো ছিল না।</p>
         <div className="w-full max-w-110">
-        <Link  href={"/"}>
-            <Button fullWidth type="submit" className={"btn-primary"}>হোম পেজে যান</Button>
+        <Link href={"/"} className={cn(buttonVariants({ fullWidth: true }), "btn-primary")}>
+            হোম পেজে যান
         </Link>
         </div>
     </div>

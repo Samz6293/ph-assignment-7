@@ -1,5 +1,6 @@
 "use client";
-import { Avatar, Button, Dropdown, Key, Label, Spinner, toast } from '@heroui/react'
+import { Avatar, Dropdown, Key, Label, Spinner, cn, toast } from '@heroui/react'
+import { buttonVariants } from '@heroui/styles'
 import Link from 'next/link'
 import { authClient } from '../lib/auth-client'
 import { useRouter } from 'next/navigation';
@@ -67,12 +68,12 @@ export default function AuthButtons({ className }: { className?: string }) {
                     </div>
                     :
                     <div className={className}>
-                        <Link href="/sign-in">
-                            <Button slot={"close"} className={"bg-base-100 hover:bg-base-300"}>সাইন ইন</Button>
+                        <Link href="/sign-in" className={cn(buttonVariants(), "bg-base-100 hover:bg-base-300")}>
+                            সাইন ইন
                         </Link>
 
-                        <Link href="/sign-up">
-                            <Button slot={"close"} className={"btn-primary"}>সাইন আপ</Button>
+                        <Link href="/sign-up" className={cn(buttonVariants(), "btn-primary")}>
+                            সাইন আপ
                         </Link>
                     </div>
             }
