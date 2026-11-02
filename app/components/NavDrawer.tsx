@@ -1,20 +1,27 @@
+"use client";
 
 import { Bars } from "@gravity-ui/icons";
-import { Button, Drawer } from "@heroui/react";
+import { Button, Drawer, useOverlayState } from "@heroui/react";
 import NavLinks from "./NavLinks";
 import AuthButtons from "./AuthButtons";
 import { NavLink } from "../types";
+import type { MouseEvent } from "react";
 
 export default function Navigation({links}:{links:NavLink[]}) {
+    const state = useOverlayState();
+
+    const closeOnLinkClick = (e: MouseEvent) => {
+        if ((e.target as HTMLElement).closest("a")) state.close();
+    };
 
     return (
-        <Drawer>
+        <Drawer state={state}>
             <Button variant="secondary" className={"lg:hidden"}>
                 <Bars />
             </Button>
             <Drawer.Backdrop variant="blur">
                 <Drawer.Content placement="right">
-                    <Drawer.Dialog>
+                    <Drawer.Dialog onClick={closeOnLinkClick}>
                         <Drawer.CloseTrigger />
                         <Drawer.Header>
                             <Drawer.Heading>ন্যাভিগেশন</Drawer.Heading>
